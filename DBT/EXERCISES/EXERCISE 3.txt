@@ -1,0 +1,92 @@
+EXERCISE 3
+2]
+
+mysql> select upper(Sname) from s;
++--------------+
+| upper(Sname) |
++--------------+
+| SUPPLIER A   |
+| SUPPLIER B   |
+| SUPPLIER C   |
+| SUPPLIER D   |
+| SUPPLIER E   |
++--------------+
+5 rows in set (0.00 sec)
+-------------------------------------------------------
+3]
+mysql> select lower(Sname) from s;
++--------------+
+| lower(Sname) |
++--------------+
+| supplier a   |
+| supplier b   |
+| supplier c   |
+| supplier d   |
+| supplier e   |
++--------------+
+5 rows in set (0.00 sec)
+________________________________________________________
+4]
+
+mysql> select Lpad(Sname,25,'*')from S;
++---------------------------+
+| Lpad(Sname,25,'*')        |
++---------------------------+
+| ***************Supplier A |
+| ***************Supplier B |
+| ***************Supplier C |
+| ***************Supplier D |
+| ***************Supplier E |
++---------------------------+
+5 rows in set (0.00 sec)
+__________________________________________________________
+5]
+
+mysql> select Replace(Sname,'li','ro')from S;
++--------------------------+
+| Replace(Sname,'li','ro') |
++--------------------------+
+| Supproer A               |
+| Supproer B               |
+| Supproer C               |
+| Supproer D               |
+| Supproer E               |
++--------------------------+
+5 rows in set (0.00 sec)
+___________________________________________________________
+6]
+
+mysql> select Replace(Replace(Sname, 'l','r'),'A','O') from s;
++------------------------------------------+
+| Replace(Replace(Sname, 'l','r'),'A','O') |
++------------------------------------------+
+| Supprier O                               |
+| Supprier B                               |
+| Supprier C                               |
+| Supprier D                               |
+| Supprier E                               |
++------------------------------------------+
+5 rows in set (0.00 sec)
+__________________________________________________________
+7]
+
+mysql> select Length(Sname) from s;
++---------------+
+| Length(Sname) |
++---------------+
+|            10 |
+|            10 |
+|            10 |
+|            10 |
+|            10 |
++---------------+
+5 rows in set (0.00 sec)
+________________________________________________________
+10]
+mysql> select dayname(sysdate()) from dual;
++--------------------+
+| dayname(sysdate()) |
++--------------------+
+| Monday             |
++--------------------+
+1 row in set (0.01 sec)

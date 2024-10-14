@@ -1,0 +1,66 @@
+EXERcise 2:
+
+
+mysql> select * from S
+    -> order by city desc;
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S2   | Supplier B |     20 | Paris  |
+| S1   | Supplier A |     10 | London |
+| S4   | Supplier D |     20 | London |
+| S5   | Supplier E |     15 | Berlin |
+| S3   | Supplier C |     30 | Athens |
++------+------------+--------+--------+
+5 rows in set (0.01 sec)
+--------------------------------------------
+2]mysql> select * from P
+    -> order by city asc, Pname asc;
++------+--------+--------+--------+--------+
+| P#   | Pname  | Color  | Weight | City   |
++------+--------+--------+--------+--------+
+| P3   | Part C | Green  |  13.00 | Athens |
+| P4   | Part D | Yellow |  11.50 | Berlin |
+| P1   | Part A | Red    |  12.00 | London |
+| P5   | Part E | Black  |  14.00 | London |
+| P2   | Part B | Blue   |  14.50 | Paris  |
++------+--------+--------+--------+--------+
+5 rows in set (0.00 sec)
+--------------------------------------------
+3]mysql> select * from s
+    -> where status between 10 and 20;
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S1   | Supplier A |     10 | London |
+| S2   | Supplier B |     20 | Paris  |
+| S4   | Supplier D |     20 | London |
+| S5   | Supplier E |     15 | Berlin |
++------+------------+--------+--------+
+4 rows in set (0.00 sec)
+--------------------------------------------
+4]mysql> select * from p
+    -> where weight not between 10 and 15;
+Empty set (0.00 sec)
+------------------------------------------
+5]
+mysql> select Pname from p
+    -> where Pname like 'S%';
+Empty set (0.00 sec)
+--------------------------------------------
+6]
+
+mysql> select * from s
+    -> where city like 'L%';
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S1   | Supplier A |     10 | London |
+| S4   | Supplier D |     20 | London |
++------+------------+--------+--------+
+2 rows in set (0.00 sec)
+------------------------------------------
+7]
+mysql> select * from J
+    -> WHERE Jname LIKE '__n%';
+Empty set (0.00 sec)

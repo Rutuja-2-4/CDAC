@@ -1,0 +1,273 @@
+a]mysql> create table s(
+    ->  `s#` VARCHAR(10),
+    -> Sname VARCHAR(50),
+    -> Status INT,
+    -> City VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> describe S;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| s#     | varchar(10) | YES  |     | NULL    |       |
+| Sname  | varchar(50) | YES  |     | NULL    |       |
+| Status | int         | YES  |     | NULL    |       |
+| City   | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+b]mysql> CREATE TABLE P (
+    ->     `P#` VARCHAR(10),  
+    ->     Pname VARCHAR(50),
+    ->     Color VARCHAR(20),
+    ->     Weight DECIMAL(5, 2),
+    ->     City VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe p;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| P#     | varchar(10)  | YES  |     | NULL    |       |
+| Pname  | varchar(50)  | YES  |     | NULL    |       |
+| Color  | varchar(20)  | YES  |     | NULL    |       |
+| Weight | decimal(5,2) | YES  |     | NULL    |       |
+| City   | varchar(50)  | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+c]mysql> create table J (
+    -> `J#` VARCHAR(10),
+    -> Jname VARCHAR(50),
+    -> City VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe J;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| J#    | varchar(10) | YES  |     | NULL    |       |
+| Jname | varchar(50) | YES  |     | NULL    |       |
+| City  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+1]mysql> CREATE TABLE SPJ(
+    -> `S#` VARCHAR(10),
+    -> `P#` VARCHAR(10),
+    -> `J#` VARCHAR(10),
+    -> Qty INT
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> describe SPJ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| S#    | varchar(10) | YES  |     | NULL    |       |
+| P#    | varchar(10) | YES  |     | NULL    |       |
+| J#    | varchar(10) | YES  |     | NULL    |       |
+| Qty   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2]mysql> INSERT INTO S (`S#`, Sname, Status, City) VALUES
+    ->     ('S1', 'Supplier A', 10, 'London'),
+    ->     ('S2', 'Supplier B', 20, 'Paris'),
+    ->     ('S3', 'Supplier C', 30, 'Athens'),
+    ->     ('S4', 'Supplier D', 20, 'London'),
+    ->     ('S5', 'Supplier E', 15, 'Berlin');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from s;
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S1   | Supplier A |     10 | London |
+| S2   | Supplier B |     20 | Paris  |
+| S3   | Supplier C |     30 | Athens |
+| S4   | Supplier D |     20 | London |
+| S5   | Supplier E |     15 | Berlin |
++------+------------+--------+--------+
+5 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3]mysql> INSERT INTO P (`P#`, Pname, Color, Weight, City) VALUES
+    ->     ('P1', 'Part A', 'Red', 12.00, 'London'),
+    ->     ('P2', 'Part B', 'Blue', 14.50, 'Paris'),
+    ->     ('P3', 'Part C', 'Green', 13.00, 'Athens'),
+    ->     ('P4', 'Part D', 'Yellow', 11.50, 'Berlin'),
+    ->     ('P5', 'Part E', 'Black', 14.00, 'London');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from p;
++------+--------+--------+--------+--------+
+| P#   | Pname  | Color  | Weight | City   |
++------+--------+--------+--------+--------+
+| P1   | Part A | Red    |  12.00 | London |
+| P2   | Part B | Blue   |  14.50 | Paris  |
+| P3   | Part C | Green  |  13.00 | Athens |
+| P4   | Part D | Yellow |  11.50 | Berlin |
+| P5   | Part E | Black  |  14.00 | London |
++------+--------+--------+--------+--------+
+5 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+4]mysql> INSERT INTO J(`J#` , Jname,City)VALUES
+    -> ('J1', 'Prject A','Athens'),
+    -> ('J2', 'Prject B','Paris'),
+    -> ('J3', 'Prject C','London'),
+    -> ('J4', 'Prject D','Athens');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from j;
++------+----------+--------+
+| J#   | Jname    | City   |
++------+----------+--------+
+| J1   | Prject A | Athens |
+| J2   | Prject B | Paris  |
+| J3   | Prject C | London |
+| J4   | Prject D | Athens |
++------+----------+--------+
+4 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------------------------------------------
+5]mysql> INSERT INTO SPJ(`S#`,`P#`,`J#`,Qty)VALUES
+    -> ('S1' , 'P1', 'J1', 100),
+    -> ('S2' , 'P2', 'J2', 150),
+    -> ('S3' , 'P3', 'J3', 200),
+    -> ('S4' , 'P4', 'J4', 250),
+    -> ('S5' , 'P5', 'J5', 300);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from SPj;
++------+------+------+------+
+| S#   | P#   | J#   | Qty  |
++------+------+------+------+
+| S1   | P1   | J1   |  100 |
+| S2   | P2   | J2   |  150 |
+| S3   | P3   | J3   |  200 |
+| S4   | P4   | J4   |  250 |
+| S5   | P5   | J5   |  300 |
++------+------+------+------+
+5 rows in set (0.01 sec)
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+6]mysql> Select * from S;
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S1   | Supplier A |     10 | London |
+| S2   | Supplier B |     20 | Paris  |
+| S3   | Supplier C |     30 | Athens |
+| S4   | Supplier D |     20 | London |
+| S5   | Supplier E |     15 | Berlin |
++------+------------+--------+--------+
+5 rows in set (0.00 sec)
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+7]mysql> SELECT `S#`,Sname FROM S;
++------+------------+
+| S#   | Sname      |
++------+------------+
+| S1   | Supplier A |
+| S2   | Supplier B |
+| S3   | Supplier C |
+| S4   | Supplier D |
+| S5   | Supplier E |
++------+------------+
+5 rows in set (0.00 sec)
+-----------------------------------------------------------------------------------------------------------------
+
+8]mysql> select Pname,Color FROM P WHERE City = 'London';
++--------+-------+
+| Pname  | Color |
++--------+-------+
+| Part A | Red   |
+| Part E | Black |
++--------+-------+
+-----------------------------------------------------------------------------------------------------------------
+
+9]mysql> select * from S where city = 'London';
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S1   | Supplier A |     10 | London |
+| S4   | Supplier D |     20 | London |
++------+------------+--------+--------+
+2 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------------
+10]mysql> select * FROM S where city in ('Paris','Athens');
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S2   | Supplier B |     20 | Paris  |
+| S3   | Supplier C |     30 | Athens |
++------+------------+--------+--------+
+2 rows in set (0.00 sec)
+-------------------------------------------------------------------------------------------------------
+
+11]mysql> Select * from J where city = 'Athens';
++------+----------+--------+
+| J#   | Jname    | City   |
++------+----------+--------+
+| J1   | Prject A | Athens |
+| J4   | Prject D | Athens |
++------+----------+--------+
+-------------------------------------------------------------------------------------------------
+12]mysql> select Pname from P where weight between 12 and 14;
++--------+
+| Pname  |
++--------+
+| Part A |
+| Part C |
+| Part E |
++--------+
+3 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------
+13]mysql> select * from S where Status >=20;
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S2   | Supplier B |     20 | Paris  |
+| S3   | Supplier C |     30 | Athens |
+| S4   | Supplier D |     20 | London |
++------+------------+--------+--------+
+3 rows in set (0.00 sec)
+-------------------------------------------------------------------------------------------------------------------------
+14]mysql> select * from S where City != 'London';
++------+------------+--------+--------+
+| s#   | Sname      | Status | City   |
++------+------------+--------+--------+
+| S2   | Supplier B |     20 | Paris  |
+| S3   | Supplier C |     30 | Athens |
+| S5   | Supplier E |     15 | Berlin |
++------+------------+--------+--------+
+3 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+15]mysql> SELECT Pname,
+    ->        Weight AS Weight_In_Grams,
+    ->        Weight * 1000 AS Weight_In_Milligrams,
+    ->        Weight / 1000 AS Weight_In_Kilograms
+    -> FROM P;
++--------+-----------------+----------------------+---------------------+
+| Pname  | Weight_In_Grams | Weight_In_Milligrams | Weight_In_Kilograms |
++--------+-----------------+----------------------+---------------------+
+| Part A |           12.00 |             12000.00 |            0.012000 |
+| Part B |           14.50 |             14500.00 |            0.014500 |
+| Part C |           13.00 |             13000.00 |            0.013000 |
+| Part D |           11.50 |             11500.00 |            0.011500 |
+| Part E |           14.00 |             14000.00 |            0.014000 |
++--------+-----------------+----------------------+---------------------+
+5 rows in set (0.00 sec)
